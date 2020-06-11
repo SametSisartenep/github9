@@ -1,0 +1,18 @@
+#!/bin/rc
+repo=()
+desc=()
+
+fn usage {
+	echo usage: $0 name description >[1=2]
+	exit usage
+}
+
+if(! ~ $#* 2)
+	usage
+
+repo=$1
+desc=$2
+
+gh/gh POST /user/repos <<EOF
+{"name": "$repo", "description": "$desc"}
+EOF

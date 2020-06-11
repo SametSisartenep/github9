@@ -1,0 +1,2 @@
+#!/bin/rc
+gh/gh GET /user/repos

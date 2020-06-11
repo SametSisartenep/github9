@@ -1,0 +1,26 @@
+#!/bin/rc
+rfork ne
+token=YOUR_TOKEN_HERE
+method=()
+url=()
+data=()
+
+fn usage {
+	echo usage: gh method url >[1=2]
+	exit usage
+}
+
+if(! ~ $#* 2)
+	usage
+
+method=$1
+url=$2
+if(~ $method POST PUT){
+#	echo enter the data:
+#	data=`{{echo holdon >[1=3]; cat /dev/cons}>[3]/dev/consctl}
+	data=`{read -m}
+}
+
+hget -m $method -r 'Authorization: token '^$token\
+	-p $"data\
+	https://api.github.com^$url
